@@ -1,6 +1,7 @@
 package de.kallifabio.party.commands;
 
 import de.kallifabio.party.handler.PartyHandler;
+import de.kallifabio.party.kalliParty;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -17,7 +18,7 @@ public class partyCommand extends Command {
         if ((sender instanceof ProxiedPlayer)) {
             ProxiedPlayer p = (ProxiedPlayer) sender;
             if (args.length == 0) {
-                sender.sendMessage(" ");
+                sender.sendMessage(kalliParty.getPrefix());
                 sender.sendMessage("§6/party create - §eErstelle eine Party");
                 sender.sendMessage("§6/party disband - §eSchließe deine Party");
                 sender.sendMessage("§6/party invite <player> - §eLade einen Spieler zu deiner Party ein");
@@ -27,7 +28,7 @@ public class partyCommand extends Command {
                 sender.sendMessage("§6/party leave - §eVerlasse deine Party");
                 sender.sendMessage("§6/party info - §eInformation über Party §8- §4Coming Soon");
                 sender.sendMessage("§6/party setowner - §eSetze den Owner für die Party §8- §4Coming Soon");
-                sender.sendMessage(" ");
+                sender.sendMessage(kalliParty.getPrefix());
             } else {
                 PartyHandler partyHandler = new PartyHandler();
                 if (args.length == 1) {
@@ -70,7 +71,7 @@ public class partyCommand extends Command {
                         for (int i = 1; i < args.length; i++) {
                             msg = msg + args[i] + " ";
                         }
-                        partyHandler.getParty(p).sendPartyMessage("§e" + p.getName() + "§8§ §6" + msg);
+                        partyHandler.getParty(p).sendPartyMessage("§e" + p.getName() + " §8>> §6" + msg);
                     }
                     if (args.length == 2) {
                         if (args[0].equalsIgnoreCase("accept")) {
